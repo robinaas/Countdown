@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<!-- Countdown timer v 1.0
+By Robin Åsheim/Copilot -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nedtellingstimer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        #timer {
+            font-size: 3em;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .control-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .label {
+            font-size: 1.2em;
+            margin-left: 10px;
+        }
+        #minuteInput, #secondInput {
+            font-size: 1.5em;
+            width: 50px;
+            text-align: center;
+        }
+        #startButton {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        .progress-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .progress-ring__circle {
+            fill: transparent;
+            stroke: #4caf50;
+            stroke-width: 10;
+            stroke-dasharray: 629;
+            stroke-dashoffset: 0;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 1s linear;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <div class="control-group">
+            <input type="number" id="minuteInput" placeholder="Minutter" min="0" max="60" value="5">
+            <label class="label" for="minuteInput">minutter</label>
+        </div>
+        <div class="control-group">
+            <input type="number" id="secondInput" placeholder="Sekunder" min="0" max="59" value="0">
+            <label class="label" for="secondInput">sekunder</label>
+        </div>
+        <button id="startButton">Start nedtelling</button>
+    </div>
+    <div class="container">
+        <svg class="progress-ring" width="200" height="200">
+            <circle class="progress-ring__circle" stroke="black" stroke-width="4" fill="transparent" r="90" cx="100" cy="100"/>
+        </svg>
+        <div id="timer">05:00</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
