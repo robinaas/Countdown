@@ -1,4 +1,4 @@
-// Countdown timer v 1.1
+// Countdown timer v 1.2
 // By Robin Åsheim/Copilot
 let time;
 let interval;
@@ -26,10 +26,16 @@ function startTimer() {
             clearInterval(interval);
             timerElement.textContent = "Tid er ute!";
             circle.style.strokeDashoffset = 0;
+			timerElement.style.strokeDashoffset = 0;
             document.getElementById('startButton').textContent = 'Start nedtelling';
+			document.getElementById('controls').style.visibility = 'visible';
+			document.querySelector('.switch').style.visibility = 'visible';
+			document.getElementById('audioControls').style.visibility = 'visible';
             document.getElementById('controls').style.display = 'block';
             document.querySelector('.switch').style.display = 'flex';
-            document.getElementById('startButton').style.visibility = 'visible';
+            document.getElementById('audioControls').style.display = 'block';
+            playAudio();
+			
         }
     }, 1000);
 }
@@ -48,6 +54,7 @@ document.getElementById('startButton').addEventListener('click', () => {
         startButton.textContent = 'Stopp nedtelling';
         document.getElementById('controls').style.visibility = 'hidden';
         document.querySelector('.switch').style.visibility = 'hidden';
+        document.getElementById('audioControls').style.visibility = 'hidden';
         document.getElementById('startButton').style.visibility = 'visible';
     } else {
         console.log("Stop button clicked");
@@ -55,8 +62,10 @@ document.getElementById('startButton').addEventListener('click', () => {
         startButton.textContent = 'Start nedtelling';
         document.getElementById('controls').style.visibility = 'visible';
         document.querySelector('.switch').style.visibility = 'visible';
+        document.getElementById('audioControls').style.visibility = 'visible';
     }
 });
+
 
 document.getElementById('themeSwitch').addEventListener('change', () => {
     const body = document.body;
@@ -76,3 +85,10 @@ document.getElementById('secondInput').addEventListener('input', () => {
         secondInput.value = 59;
     }
 });
+
+function playAudio() {
+    const audioSelect = document.getElementById('audioSelect');
+    const audioFilePath = audioSelect.value;
+    const audio = new Audio(audioFilePath);
+    audio.play();
+}
