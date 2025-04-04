@@ -1,161 +1,12 @@
-<!-- Countdown timer v 1.2
+<!-- Countdown timer v 1.3
 By Robin Åsheim/Copilot -->
 <!DOCTYPE html>
 <html lang="no">
 <head>
     <meta charset="UTF-8">
+	<link rel="stylesheet" href="styles.css">
     <title>Nedtellingstimer</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-        }
-        .container {
-            position: relative;
-            width: 400px;
-            height: 400px;
-        }
-        #timer {
-            font-size: 6em;
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        #controls {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-        .control-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .label {
-            font-size: 1.2em;
-            margin-left: 10px;
-            color: #a9a9a9;
-        }
-        #minuteInput, #secondInput {
-            font-size: 1.5em;
-            width: 50px;
-            text-align: center;
-            border-radius: 5px;
-            background-color: #000000;
-            color: #a9a9a9;
-            border: 1px solid #808080;
-        }
-        #startButton {
-            font-size: 1.5em;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: #2196F3;
-            color: #000000;
-            border: none;
-            cursor: pointer;
-            margin-top: 50px; /* Add margin to create space between timer and button */
-        }
-        .progress-ring {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .progress-ring__circle {
-            fill: transparent;
-            stroke: #4caf50;
-            stroke-width: 30;
-            stroke-dasharray: 1256;
-            stroke-dashoffset: 0;
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
-            transition: stroke-dashoffset 1s linear;
-        }
-        .light-mode {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .light-mode .progress-ring__circle {
-            stroke: #4caf50;
-        }
-        .light-mode .label {
-            color: #000000;
-        }
-        .light-mode #minuteInput, .light-mode #secondInput {
-            background-color: #ffffff;
-            color: #000000;
-            border: 1px solid #808080;
-        }
-        .settings-table {
-            display: table;
-        }
-        .settings-row {
-            display: table-row;
-        }
-        .settings-cell {
-            display: table-cell;
-            padding-right: 10px; /* Add padding between cells */
-        }
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 20px;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 20px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 2px;
-            bottom: 2px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-        input:checked + .slider:before {
-            transform: translateX(20px);
-        }
-        .switch-label {
-            cursor: pointer;
-            color: #a9a9a9;
-        }
-        #audioControls {
-            position: absolute;
-            top: 40px;
-            right: 20px;
-        }
-        #audioSelect {
-            background-color: #000000;
-            color: #a9a9a9;
-            border: 1px solid #808080;
-            border-radius: 5px;
-            padding: 5px;
-        }
-    </style>
+    
 </head>
 <body>
     <div id="controls">
@@ -176,29 +27,32 @@ By Robin Åsheim/Copilot -->
     </div>
     <button id="startButton">Start nedtelling</button>
     <div class="settings-table">
-        <div class="settings-row">
-            <div class="settings-cell">
-                <label class="switch-label" for="themeSwitch">Mørk/lys modus</label>
-            </div>
-            <div class="settings-cell">
-                <label class="switch-label" for="themeSwitch">
-                    <input type="checkbox" id="themeSwitch">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-        <div class="settings-row">
-            <div class="settings-cell">
-                <label for="audioSelect">Velg lyd:</label>
-            </div>
-            <div class="settings-cell">
-                <select id="audioSelect">
-                    <option value="audio/success.wav">Success</option>
-                    <option value="audio/two-bells.wav">Two Bells</option>
-                </select>
-            </div>
-        </div>
+		
+		<div class="settings-row">
+			<div class="settings-cell">
+
+				<label class="switch-label" for="themeSwitch">Mørk/lys modus:</label>
+			</div>
+			<div class="settings-cell">
+				<label class="switch">
+					<input type="checkbox" id="themeSwitch" >
+					<span class="slider"></span>
+				</label>	
+			</div>
+		</div>
+		<div class="settings-row">
+			<div class="settings-cell">
+				<label class="switch-label" for="audioSelect">Velg lyd:</label>
+			</div>
+			<div class="settings-cell">
+				<select id="audioSelect">
+					<option value="audio/success.wav">Success</option>
+					<option value="audio/two-bells.wav">Two Bells</option>
+				</select>
+			</div>
+		</div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
