@@ -14,7 +14,7 @@ function startTimer() {
     const circumference = 2 * Math.PI * radius;
 
     circle.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.style.strokeDashoffset = circumference;
+    circle.style.strokeDashoffset = 0;
 	
     interval = setInterval(() => {
         const minutes = Math.floor(time / 60);
